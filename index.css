@@ -130,7 +130,7 @@ ul {
 
 #hero-image {
 	/* background-image: url("../../assets/Neil\ hero\ page.JPG"); */
-	background-image: linear-gradient(rgba(33, 37, 40, .4), rgba(33, 37, 40, .7)), url("../../assets/Neil\ hero\ page.JPG");
+	background-image: linear-gradient(rgba(33, 37, 40, .4), rgba(33, 37, 40, .7)), url("/assets/HeroImage.jpg");
 	background-position-y: 40%;
 	background-position-x: center;
 	background-size: cover;

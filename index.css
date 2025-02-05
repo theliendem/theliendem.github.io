@@ -1,0 +1,139 @@
+body {
+	background-image: linear-gradient(to top right, rgba(48, 51, 56) 0%, rgba(8, 12, 16) 50%, black)
+}
+
+header {
+	padding-top: 10vh;
+	margin-bottom: 50vh;
+}
+
+h1 {
+	font-size: 8rem !important;
+	/* text-shadow: 2px 2px 10px rgba(255, 255, 255, .35); */
+	letter-spacing: 2px;
+}
+
+h1 #typewriter {
+	background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
+	text-shadow: 3px 3px 10px rgba(255, 255, 255, .35);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: Consolas, monaco, monospace;
+}
+
+#cursor {
+	color: gray;
+	animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 100%;
+	}
+
+	50% {
+		opacity: 0%;
+	}
+
+	100% {
+		opacity: 100%
+	}
+}
+
+.grass {
+	background-image: url("/assets/grass.jpg");
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: none;
+}
+
+ul {
+	list-style-position: inside;
+	display: inline-block;
+	text-align: left;
+}
+
+.heading1 {
+	margin-top: 7vh;
+}
+
+.checkmark {
+	list-style-image: url("/assets/check\ mark.png");
+}
+
+.xmark {
+	list-style-image: url("/assets/x\ mark.png");
+}
+
+.qmark {
+	list-style-image: url("/assets/question\ mark.png");
+}
+
+.text-light * {
+	color: rgba(255, 255, 255, .8);
+}
+
+.hero-section {
+	margin-top: 12vh;
+	text-shadow: none;
+	-webkit-animation: hero-section 1s ease-in-out infinite alternate;
+	-moz-animation: hero-section 1s ease-in-out infinite alternate;
+	animation: hero-section 1s ease-in-out infinite alternate;
+}
+
+.glow {
+	text-shadow: 0px 0px 15px rgba(255, 255, 255, .5) !important;
+}
+
+@media all and (max-width: 992px) {
+	h1 {
+		font-size: 10rem !important;
+	}
+
+	.hero-section {
+		margin-top: 6vh;
+	}
+
+	.add-margin-small {
+		margin-top: 5vh;
+	}
+
+	.display-2 {
+		font-size: 7rem !important;
+		padding-bottom: 5vh;
+		margin-top: 0 !important;
+	}
+
+	.col-sm-12 * {
+		font-size: 4rem !important;
+	}
+
+	#hero-image {
+		height: 40vh !important;
+	}
+
+	.iam-ul {
+		padding: 0 17vw !important;
+	}
+
+	#jk-text {
+		margin-top: 10vh;
+		font-size: 6rem;
+	}
+}
+
+.iam-ul {
+	padding: 0 10vw;
+}
+
+#hero-image {
+	/* background-image: url("../../assets/Neil\ hero\ page.JPG"); */
+	background-image: linear-gradient(rgba(33, 37, 40, .4), rgba(33, 37, 40, .7)), url("../../assets/Neil\ hero\ page.JPG");
+	background-position-y: 40%;
+	background-position-x: center;
+	background-size: cover;
+	width: 100%;
+	height: 75vh;
+}

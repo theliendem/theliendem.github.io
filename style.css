@@ -1,0 +1,69 @@
+/* 
+To make global variables:
+:root {
+	--text-color: #ddd;
+}
+
+body {
+	To use variables:
+	color: var(--text-color);
+}
+*/
+
+@font-face {
+	font-family: "Phantom Sans";
+	src: url("/assets/Phantom_Sans_0.7/Regular.woff") format('woff');
+}
+
+@font-face {
+	font-family: "Phantom Sans";
+	src: url("/assets/Phantom_Sans_0.7/Bold.woff") format('woff');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "Phantom Sans";
+	src: url("/assets/Phantom_Sans_0.7/BoldItalic.woff") format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Phantom Sans";
+	src: url("/assets/Phantom_Sans_0.7/Italic.woff") format('woff');
+	font-style: italic;
+}
+
+body {
+	/* background-color: rgb(33, 37, 40) !important; */
+	background-color: black !important;
+	font-family: 'Phantom Sans' !important;
+	min-height: 100vh;
+	padding-bottom: 25rem !important;
+	position: relative;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.list-group-item {
+	border: none !important;
+}
+
+.prevent-select,
+.prevent-select * {
+	-webkit-user-select: none;
+	/* Safari */
+	-ms-user-select: none;
+	/* IE 10 and IE 11 */
+	user-select: none;
+	/* Standard syntax */
+}
+
+footer {
+	margin-top: auto;
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}

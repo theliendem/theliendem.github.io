@@ -10,6 +10,8 @@ body {
 }
 */
 
+/* This is the general stylesheet used in every page. Individual pages can have their own stylesheets as well. */
+
 @font-face {
 	font-family: "Phantom Sans";
 	src: url("/assets/Phantom_Sans_0.7/Regular.woff") format('woff');

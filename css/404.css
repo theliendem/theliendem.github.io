@@ -1,0 +1,16 @@
+
+/* @media all and (max-width: 992px) {
+	.display-1 {
+		margin-top: 15vh;
+		font-size: 1rem !important;
+	}
+} */
+
+.display-1 {
+	margin-top: 20vh;
+	font-size: 15rem !important;
+}
+
+.display-5 {
+	cursor: pointer;
+}

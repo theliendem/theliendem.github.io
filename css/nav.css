@@ -1,4 +1,4 @@
-.navbar-toggler {
+/* .navbar-toggler {
 	width: 60px;
 	height: 20px;
 	position: relative;
@@ -14,166 +14,91 @@
 	box-shadow: none;
 	border: 0;
 	position: relative;
+} */
+
+.navbar-toggler-icon {
+	background-image: none !important;
+	background-color: var(--bs-white);
+	height: 3px;
+	width: 25px;
+	margin: 10px 0;
+	position: relative;
+	transition: all 0.35s ease-out;
+	transform-origin: center;
+}
+
+.navbar-toggler-icon::before {
+	display: block;
+	background-color: var(--bs-white);
+	height: 3px;
+	content: "";
+	position: relative;
+	top: -7px;
+	transition: all 0.15s ease-out;
+	/*taken down to hide quicker*/
+	transform-origin: center;
+}
+
+.navbar-toggler-icon::after {
+	display: block;
+	background-color: var(--bs-white);
+	height: 3px;
+	content: "";
+	position: relative;
+	top: 4px;
+	transition: all 0.35s ease-out;
+	transform-origin: center;
+}
+
+.navbar-dark .navbar-toggler-icon,
+.navbar-dark .navbar-toggler-icon::before,
+.navbar-dark .navbar-toggler-icon::after {
+	background-color: var(--bs-white);
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+	transform: rotate(45deg);
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+	opacity: 0;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+	transform: rotate(-90deg) translateX(7px);
 }
 
 .dropdown-item:hover {
 	cursor: pointer;
 }
 
-.navbar-toggler span {
-	margin: 0;
-	padding: 0;
-}
-
-.toggler-icon {
-	display: block;
-	position: absolute;
-	height: 4px;
-	width: 100%;
-	background: #fff;
-	border-radius: 1px;
-	opacity: 1;
-	left: 0;
-	transform: rotate(0deg);
-	transition: .25s ease-in-out;
-}
-
-.middle-bar {
-	margin-top: 0px;
-}
-
-
-/* when navigation is clicked */
-
-.navbar-toggler .top-bar {
-	top: inherit;
-	transform: rotate(135deg);
-}
-
-.navbar-toggler .middle-bar {
-	opacity: 0;
-	top: inherit;
-	filter: alpha(opacity=0);
-}
-
-.navbar-toggler .bottom-bar {
-	top: inherit;
-	transform: rotate(-135deg);
-}
-
-/* State when the navbar is collapsed */
-
-.navbar-toggler.collapsed .top-bar {
-	position: absolute;
-	top: 0px;
-	transform: rotate(0deg);
-}
-
-.navbar-toggler.collapsed .middle-bar {
-	opacity: 1;
-	position: absolute;
-	top: 17px;
-	filter: alpha(opacity=100);
-}
-
-.navbar-toggler.collapsed .bottom-bar {
-	position: absolute;
-	top: 34px;
-	transform: rotate(0deg);
-}
-
 .navbar {
-	z-index: 1000;
 	position: absolute;
 	width: 100vw;
 }
 
-.dropdown-menu {
-	left: -70px;
+.navbar-toggler-icon {
+	zoom: 225%;
+}
+
+.nav-link:hover { 
+	/* box-shadow: 0 30px 10px -10px rgba(255, 255, 255, .5); */
+	text-decoration: underline;
 }
 
 @media all and (max-width: 992px) {
+	.navbar-nav {
+		zoom: 150%;
+	}
 	nav {
-		height: 6.5vh;
+		background-color: rgba(0, 0, 0, .5);
 	}
-
-	.navbar-toggler {
-		outline: none !important;
-		border: none;
-		position: absolute;
-		right: 0;
+	.nav-item {
+		margin-left: 1vw;
 	}
-
-	.navbar-brand {
-		color: white !important;
-		padding-left: 5vw !important;
-		font-size: 3.5rem !important;
-		padding-top: 1vh !important;
-	}
-
-	.navbar-brand img {
-		width: 7vw;
-		height: 7vw;
-	}
-
-	nav {
-		padding-top: .5vh !important;
-		padding-bottom: 7vh !important;
-	}
-
-	.nav-item,
-	.dropdown-item {
-		padding: 1.5rem !important;
-		font-size: 2rem;
-	}
-}
-
-@media all and (min-width: 992px) {
-	.navbar .dropdown-menu-end {
-		right: 0;
-		left: auto;
-	}
-
-	.navbar .nav-item .dropdown-menu {
-		display: block;
-		opacity: 0;
-		visibility: hidden;
-		transition: .3s;
-		margin-top: 0;
-	}
-
-	/* .navbar .nav-item:hover .nav-link {
-		color: #c9c9c9;
-	} */
-
-	.navbar .dropdown-menu.fade-down {
-		top: 80%;
-		transform: rotateX(-75deg);
-		transform-origin: 0% 0%;
-	}
-
-	.navbar .dropdown-menu.fade-up {
-		top: 180%;
-	}
-
-	.navbar .nav-item:hover .dropdown-menu {
-		transition: .3s;
-		opacity: 1;
-		visibility: visible;
-		top: 100%;
-		transform: rotateX(0deg);
-	}
-}
-
-.navbar .nav-item .nav-link {
-	height: 100%;
-}
-
-.navbar .nav-item .nav-link:hover {
-	cursor: pointer !important;
-	color: lightgray !important;
 }
 
 nav {
-	box-shadow: 0 30px 10px -10px rgba(0, 0, 0, .5);
+	/* box-shadow: 0 30px 10px -10px rgba(0, 0, 0, .5); */
+	background-color: rgba(0, 0, 0, .5);
 }

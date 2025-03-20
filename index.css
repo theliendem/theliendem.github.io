@@ -1,5 +1,5 @@
 body {
-	background-image: linear-gradient(to top right, rgba(48, 51, 56) 0%, rgba(8, 12, 16) 50%, black)
+	background-image: linear-gradient(to top, rgba(48, 51, 56) 0%, rgba(9, 9, 11) 50%, black)
 }
 
 header {
@@ -84,7 +84,7 @@ ul {
 }
 
 .display-1 {
-	font-size: 10vw !important;
+	font-size: 6.5vw !important;
 }
 
 .glow {
@@ -134,7 +134,8 @@ ul {
 
 #hero-image {
 	/* background-image: url("../../assets/Neil\ hero\ page.JPG"); */
-	background-image: linear-gradient(rgba(33, 37, 40, .4), rgba(33, 37, 40, .7)), url("/assets/HeroImage.jpg");
+	/* background-image: linear-gradient(rgba(33, 37, 40, .4), rgba(33, 37, 40, .7)), url("/assets/HeroImage.jpg"); */
+	background-image: linear-gradient(to bottom, rgba(33, 37, 40,.4), rgba(9, 9, 11)), url("/assets/HeroImage.jpg") !important;
 	background-position-y: 40%;
 	background-position-x: center;
 	background-size: cover;

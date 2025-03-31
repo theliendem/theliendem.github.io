@@ -39,9 +39,9 @@ body {
 body {
 	/* background-color: rgb(33, 37, 40) !important; */
 	background-color: black !important;
-	font-family: 'Phantom Sans' !important;
+	font-family: 'Phantom Sans';
 	min-height: 100vh;
-	padding-bottom: 25rem !important;
+	/* padding-bottom: 25rem !important; */
 	position: relative;
 	margin: 0;
 	display: flex;

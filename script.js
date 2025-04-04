@@ -1,25 +1,40 @@
-// This is the general script used in every page. Individual pages can have their own scripts as well.
+const content = document.getElementById("hidden-content").innerHTML;
+document.getElementById("hidden-content").style.display = "none";
 
-// Bootstrap
-bs_link = document.createElement('link')
-	.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-		.rel = "stylesheet"
-			.integrity = "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-				.crossorigin = "anonymous"
-					.innerHTML = "";
-bs_script = document.createElement('script')
-	.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-		.integrity = "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-			.crossorigin = "anonymous"
-				.innerHTML = "";
+document.addEventListener("DOMContentLoaded", function () {
+	// navbarStuff();
 
-// document.getElementsByTagName('head')[0].innerHTML += `
-// 	<!-- Bootstrap -->
-// 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-// 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-// 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-// 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-// 		crossorigin="anonymous"></script>
-// `
+	const div = document.getElementById("content");
 
-// document.getElementsByTagName("head")[0].innerHTML += `<script src="/assets/nav.js" defer></script>`
+	let i = 0;
+	let inTag = false;
+
+	function typeNextCharacter() {
+		if (i < content.length) {
+			const char = content[i];
+
+			// Update inTag status
+			if (char === '<') {
+				inTag = true;
+			} else if (char === '>') {
+				inTag = false;
+			}
+
+			// Set typing speed based on whether we're in a tag
+			const speed = inTag ? 0 : 35; // Fast for tags, slow for visible text
+
+			// Update the content
+			div.innerHTML = content.substring(0, i + 1) + `<span id="cursor">_</span>`;
+
+			// Schedule the next character
+			i++;
+			setTimeout(typeNextCharacter, speed);
+		}
+
+	}
+
+	// Start the typing animation
+	typeNextCharacter();
+
+	document.getElementById("cursor").innerHTML = "";
+});

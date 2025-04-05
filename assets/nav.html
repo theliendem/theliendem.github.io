@@ -1,30 +1,21 @@
-<link rel="stylesheet" href="/css/nav.css">
-<div class="container-fluid prevent-select">
-	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-		data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon collapsed"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-			<li class="nav-item fs-3 pe-4">
-				<a class="nav-link active text-light" aria-current="page" href="#">Home</a>
-			</li>
-			<li class="nav-item fs-3 pe-4">
-				<a class="nav-link text-light" href="#">About Me</a>
-			</li>
-			<li class="nav-item fs-3 pe-4">
-				<a class="nav-link text-light" href="#">Projects</a>
-			</li>
-			<li class="nav-item fs-3 pe-4">
-				<a class="nav-link text-light" href="#">Hobbies</a>
-			</li>
-			<li class="nav-item fs-3 pe-4">
-				<a class="nav-link text-light" href="#">Photography</a>
-			</li>
-			<li class="nav-item fs-3">
-				<a class="nav-link text-light" href="#">Contact</a>
-			</li>
-		</ul>
-	</div>
-</div>
+<ul class="sidebar">
+	<li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+				width="24px" fill="#e3e3e3">
+				<path
+					d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+			</svg></a></li>
+	<li><a href="/">Home</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/projects">Projects</a></li>
+	<li><a href="/contact">Contact</a></li>
+</ul>
+<ul>
+	<li class="hideOnMobile"><a href="/">Home</a></li>
+	<li class="hideOnMobile"><a href="/about">About</a></li>
+	<li class="hideOnMobile"><a href="/projects">Projects</a></li>
+	<li class="hideOnMobile"><a href="/contact">Contact</a></li>
+	<li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+				viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+				<path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+			</svg></a></li>
+</ul>

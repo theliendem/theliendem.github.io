@@ -6,10 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	let i = 0;
 	let inTag = false;
-
+	
 	function typeNextCharacter() {
 		if (i < content.length) {
 			const char = content[i];
+			
+			let newContent = "";
+
+			if (i == content.length-1) newContent = content.substring(0, i + 1);
+			else newContent = content.substring(0, i + 1) + `<span id="cursor">_</span>`;
 
 			// Update inTag status
 			if (char === '<') {
@@ -17,10 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			} else if (char === '>') {
 				inTag = false;
 			}
-
-			let newContent = "";
-			if (i == content.length-1) newContent = content.substring(0, i + 1);
-			else newContent = content.substring(0, i + 1) + `<span id="cursor">_</span>`;
 
 
 			if (inTag) {
@@ -32,10 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				// If we're not in a tag, add the character with delay
 				div.innerHTML = newContent;
 				i++;
-				setTimeout(typeNextCharacter, 12);
+				setTimeout(typeNextCharacter, 4);
 			}
 		}
-
 	}
 
 	// Start the typing animation

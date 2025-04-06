@@ -40,9 +40,44 @@
 
 			I've always wanted to see my stats like in a video game, so here you go:<br>
 
+			<div class="life-bar-graph">
+				<div class="stat">
+					<span class="label">Coding</span>
+					<div class="bar">
+						<div class="fill" style="width: 95%;"></div>
+					</div>
+				</div>
+				<div class="stat">
+					<span class="label">Sleep</span>
+					<div class="bar">
+						<div class="fill" style="width: 60%;"></div>
+					</div>
+				</div>
+				<div class="stat">
+					<span class="label">Social Life</span>
+					<div class="bar">
+						<div class="fill" style="width: 35%;"></div>
+					</div>
+				</div>
+				<div class="stat">
+					<span class="label">Procrastination</span>
+					<div class="bar">
+						<div class="fill" style="width: 70%;"></div>
+					</div>
+				</div>
+				<div class="stat">
+					<span class="label">Grades</span>
+					<div class="bar">
+						<div class="fill" style="width: 90%;"></div>
+					</div>
+				</div>
+			</div>
+
 			<br><br><br>
 			<!-- Anchor tag with style button -->
 			<a href="/projects" class="button">View my work</a><br>
+
+			<span id="done_with_animation"></span>
 		</p>
 	</div>
 
@@ -60,6 +95,24 @@
 			const sidebar = document.querySelector(".sidebar");
 			sidebar.style.display = "none";
 		}
+
+		// function displayAnim() {
+		// 	const cont = document.getElementById("content");
+		// 	const stats = cont.querySelectorAll('.stat');
+
+		// 	stats.forEach(stat => {
+		// 		const fill = stat.querySelector('.fill');
+		// 		const targetWidth = fill.style.width; // Get the target width (e.g., 95%)
+
+		// 		// Temporarily set width to 0% to start the animation
+		// 		fill.style.width = '0%';
+
+		// 		// Wait a bit for the page to load and then animate to the target width
+		// 		setTimeout(() => {
+		// 			fill.style.width = targetWidth; // Animate to the target width
+		// 		}, 1000); // Small delay before starting the animation
+		// 	});
+		// }
 	</script>
 </body>
 

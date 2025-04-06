@@ -111,6 +111,39 @@ nav a.active {
 	color: white;
 }
 
+.life-bar-graph {
+	margin-top: 30px;
+	max-width: 75%;
+}
+
+.stat {
+	display: flex;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.label {
+	flex: 1;
+	font-size: 1.7rem;
+	/* font-weight: bold; */
+}
+
+.bar {
+	flex: 3;
+	border: 1px solid #555;
+	border-radius: 3px;
+	height: 15px;
+	/* Shorten the bars */
+	margin-left: 30px;
+	overflow: hidden;
+}
+
+.fill {
+	height: 100%;
+	background-color: white;
+	transition: width 1s ease-in-out;
+}
+
 @keyframes fadeIn {
 	0% {
 		opacity: 0;

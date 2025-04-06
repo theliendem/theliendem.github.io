@@ -111,9 +111,9 @@ nav a.active {
 	color: white;
 }
 
-.life-bar-graph {
-	margin-top: 30px;
-	max-width: 75%;
+.life-stats {
+	margin-top: 20px;
+	max-width: 65vw;
 }
 
 .stat {
@@ -123,25 +123,28 @@ nav a.active {
 }
 
 .label {
-	flex: 1;
+	width: 150px;
+	font-weight: bold;
 	font-size: 1.7rem;
-	/* font-weight: bold; */
+	white-space: nowrap;
+	margin-right: 10px;
+	flex-shrink: 0;
 }
 
 .bar {
-	flex: 3;
-	border: 1px solid #555;
+	flex: 1;
+	height: 20px;
+	background-color: #333;
 	border-radius: 3px;
-	height: 15px;
-	/* Shorten the bars */
-	margin-left: 30px;
 	overflow: hidden;
+	position: relative;
+	border: 1px solid #777;
+	margin-left: 15vw;
 }
 
 .fill {
 	height: 100%;
-	background-color: white;
-	transition: width 1s ease-in-out;
+	background: linear-gradient(90deg, #ffffff, #cccccc);
 }
 
 @keyframes fadeIn {
@@ -248,7 +251,7 @@ nav a.active {
 		font-size: 2.5rem;
 	}
 
-	p {
+	p, .label {
 		font-size: 1.2rem;
 	}
 
@@ -269,6 +272,20 @@ nav a.active {
 		padding-left: 5vw;
 		padding-right: 5vw;
 	};
+
+	.stat {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.bar {
+		margin-left: 0;
+		width: 100%;
+	}
+
+	.fill {
+		height: 18px;
+	}
 }
 
 @media (max-width: 400px) {
@@ -280,7 +297,7 @@ nav a.active {
 		font-size: 2rem;
 	}
 
-	p {
+	p, .label {
 		font-size: 1rem;
 	}
 

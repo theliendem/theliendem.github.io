@@ -60,14 +60,6 @@ p {
 	font-size: 1.7rem;
 }
 
-footer {
-	margin-top: auto;
-	position: absolute;
-	right: 0;
-	left: 0;
-	bottom: 0;
-}
-
 a {
 	text-decoration: none;
 	transition: all 0.3s ease;
@@ -76,6 +68,10 @@ a {
 a:hover {
 	text-decoration: underline;
 	transition: all 0.3s ease;
+}
+
+#content {
+	margin-bottom: 10vh;
 }
 
 /* Navbar stuff */
@@ -238,6 +234,25 @@ nav a.active {
 	text-decoration: underline;
 }
 
+hr {
+	max-width: 75vw;
+}
+
+footer {
+	margin-top: auto;
+	margin-bottom: 3vh;
+}
+
+footer p {
+	margin-left: 1vw;
+	font-size: 1.2rem;
+	color: #ddd;
+}
+
+footer hr {
+	margin-bottom: 2vh;
+}
+
 @media (max-width: 768px) {
 	.hideOnMobile {
 		display: none;
@@ -249,6 +264,7 @@ nav a.active {
 
 	h1 {
 		font-size: 2.5rem;
+		margin-top: 5vh;
 	}
 
 	p, .label {
@@ -286,6 +302,14 @@ nav a.active {
 	.fill {
 		height: 18px;
 	}
+
+	footer {
+		padding: 0 10vw;
+	}
+
+	footer p {
+		font-size: 1rem;
+	}
 }
 
 @media (max-width: 400px) {
@@ -304,5 +328,9 @@ nav a.active {
 	#content {
 		padding-left: 10vw;
 		padding-right: 10vw;
+	}
+
+	footer p {
+		font-size: 0.8rem;
 	}
 }

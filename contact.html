@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title> Contact | Neil Dembla </title>
 	<link rel="icon" href="/assets/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="/style.css">
-	<link rel="stylesheet" type="text/css" href="">
+	
+	<!-- Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Neil Dembla's personal portfolio.">
+	<meta name="keywords" content="Neil Dembla, Neil, Dembla, personal website, portfolio, projects">
+	<meta name="author" content="Neil Dembla">
+	<meta name="theme-color" content="#000000">
 
-	<script src="/script.js"></script>
-	<script src="" defer></script>
+	<!-- Comment out this script to remove typing animation -->
+	<script src="script.js" defer></script>
+
+	<!-- For social icons -->
+	<script src="https://kit.fontawesome.com/1bba239c66.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="text-light">
+<body>
 	<script id="replace_with_navbar" src="/js/add_nav.js"></script>
 
+	<div id="hidden-content">
+		<!-- Contact Page Content -->
+		<h1>Let's Get in Touch</h1><br>
+	
+		<hr><br>
+	
+		<p>
+			Want to say hi, roast my code, or offer me a million-dollar startup idea? <br>
+			Check me out: <br><br>
+
+			FYI, my reponse time is directly correlated to how interesting your message is. <br><br>
+	
+			<a href="https://www.youtube.com/@neildembla1"><i class="fa-brands fa-youtube"></i> @neildembla1</a><br>
+			<a href="https://www.instagram.com/neildembla1"><i class="fa-brands fa-instagram"></i> neildembla1</a><br>
+			<a href="https://www.linkedin.com/in/neildembla/"><i class="fa-brands fa-linkedin"></i> neildembla</a><br>
+			<a href="https://bsky.app/profile/neildembla.com"><i class="fa-brands fa-bluesky"></i> @neildembla.com</a><br>
+			<a href="https://github.com/theliendem"><i class="fa-brands fa-github"></i> theliendem</a><br><br>
+	
+			Or email me directly at: <a href="mailto:neil@neildembla.com">neil@neildembla.com</a><br><br>
+	
+			<i>Don't be shy — I promise I only bite bugs 🐞</i>
+		</p>
+	</div>
 
 
-	<script id="replace_with_footer" src="/js/footer.js"></script>
+	<div id="content">
+
+	</div>
+
+	<script>
+		function showSidebar() {
+			const sidebar = document.querySelector(".sidebar");
+			sidebar.style.display = "flex";
+		}
+
+		function hideSidebar() {
+			const sidebar = document.querySelector(".sidebar");
+			sidebar.style.display = "none";
+		}
+	</script>
+	
+	<script id="replace_with_footer" src="/js/add_footer.js"></script>
 </body>
 
 </html>

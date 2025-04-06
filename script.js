@@ -2,15 +2,6 @@ const content = document.getElementById("hidden-content").innerHTML;
 document.getElementById("hidden-content").style.display = "none";
 
 document.addEventListener("DOMContentLoaded", function () {
-	// navbarStuff();
-
-	// fetch("/assets/nav.html")
-	// 	.then(res => res.text())
-	// 	.then(text => {
-	// 		let navbar = document.querySelector("nav");
-	// 		navbar.innerHTML = text;
-	// 	});
-
 	const div = document.getElementById("content");
 
 	let i = 0;

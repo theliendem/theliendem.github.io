@@ -42,19 +42,19 @@
 			<div class="life-stats">
 				<div class="stat">
 					<span class="label">Coding</span>
-					<div class="bar"><div class="fill" style="width: 90%;"></div></div>
+					<div class="bar"><div class="fill" data-targetwidth="60" style="width: 0%;"></div></div>
 				</div>
 				<div class="stat">
 					<span class="label">Procrastination</span>
-					<div class="bar"><div class="fill" style="width: 99%;"></div></div>
+					<div class="bar"><div class="fill" data-targetwidth="80" style="width: 0%;"></div></div>
 				</div>
 				<div class="stat">
-					<span class="label">Meme Knowledge</span>
-					<div class="bar"><div class="fill" style="width: 85%;"></div></div>
+					<span class="label">Sleep</span>
+					<div class="bar"><div class="fill" data-targetwidth="40" style="width: 0%;"></div></div>
 				</div>
 				<div class="stat">
-					<span class="label">Div Centering</span>
-					<div class="bar"><div class="fill" style="width: 60%;"></div></div>
+					<span class="label">Humor</span>
+					<div class="bar"><div class="fill" data-targetwidth="60" style="width: 0%;"></div></div>
 				</div>
 			</div>
 
@@ -80,6 +80,35 @@
 			const sidebar = document.querySelector(".sidebar");
 			sidebar.style.display = "none";
 		}
+
+		let barAnimationDone = false;
+		let typingDone = false;
+
+		setInterval(() => {
+			let humorBar = document.querySelector("#content .life-stats .stat:nth-child(4) .fill");
+			if (!humorBar) return; // Check if humorBar exists (this is because while the typing animation is going in, the humorBar doesn't exist)
+			else if (!typingDone) typingDone = true;
+
+			if (!barAnimationDone) {
+				const stats = document.querySelectorAll('.stat');
+
+				stats.forEach(stat => {
+					const fill = stat.querySelector('.fill');
+					const targetWidth = fill.getAttribute('data-targetwidth');
+
+					fill.style.width = targetWidth + "%";
+				});
+				barAnimationDone = true; // stop from constantly animating every bar
+			}
+
+			humorBar.style.transition = "transition: width 2s ease-in-out;";
+
+			let newWidth = (Math.random() * 80 + 10);
+			while (Math.abs(humorBar.style.width - newWidth) < 20) {
+				newWidth = (Math.random() * 80 + 10); // make sure it's not too low
+			}
+			humorBar.style.width = Math.max(0, Math.min(100, newWidth)) + "%";
+		}, 2000);
 	</script>
 
 	<script id="replace_with_footer" src="/js/add_footer.js"></script>

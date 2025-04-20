@@ -33,6 +33,10 @@ body {
 	padding: 0;
 }
 
+#hidden-content {
+	display: none;
+}
+
 ion-icon {
 	color: white;
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Blog Post | Neil Dembla</title>
+	<link rel="icon" href="/assets/favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+
+	<!-- Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Neil Dembla's personal blog post">
+	<meta name="keywords" content="Neil Dembla, blog, post">
+	<meta name="author" content="Neil Dembla">
+	<meta name="theme-color" content="#000000">
+
+	<!-- Comment out this script to remove typing animation -->
+	<script src="/script.js" defer></script>
+
+	<!-- For social icons -->
+	<script src="https://kit.fontawesome.com/1bba239c66.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<script id="replace_with_navbar" src="/js/add_nav.js"></script>
+
+	<div id="hidden-content">
+		<!-- Blog post content -->
+		<div class="blog-post">
+			<div class="blog-header">
+				<h1>Edition #X</h1>
+				<p class="post-date">Month Day, Year</p>
+			</div>
+
+			<hr><br>
+
+			<!-- REMEMBER: CTRL+CMD+K TOGGLES CURSOR INLINE AUTOCOMPLETE -->
+
+			<div class="blog-content">
+				<!-- Your blog post content goes here -->
+				<p>
+					text content blah blah blah
+				</p>
+
+				<div class="blog-quote">
+					<i class="fas fa-quote-left"></i>
+					<p>"random quote by marcus aurelius or smth"</p>
+				</div>
+
+				<p>
+					separate paragraph
+				</p>
+
+				<h2>subheading</h2>
+				<p>
+					more boring paragraph
+				</p>
+
+				<h3>smaller subheading</h3>
+				<p>
+					yap yap yap
+				</p>
+			</div>
+
+			<a href="/blog" class="back-to-blog">
+				<i class="fas fa-arrow-left"></i> Back to Blog
+			</a>
+			<a href="/blogs/all-posts" class="back-to-blog">
+				<i class="fas fa-arrow-left"></i> View all posts
+			</a>
+		</div>
+	</div>
+
+	<div id="content">
+	</div>
+
+	<script>
+		function showSidebar() {
+			const sidebar = document.querySelector(".sidebar");
+			sidebar.style.display = "flex";
+		}
+
+		function hideSidebar() {
+			const sidebar = document.querySelector(".sidebar");
+			sidebar.style.display = "none";
+		}
+	</script>
+
+	<script id="replace_with_footer" src="/js/add_footer.js"></script>
+</body>
+
+</html> 

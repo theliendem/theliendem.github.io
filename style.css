@@ -74,6 +74,10 @@ a:hover {
 	transition: all 0.3s ease;
 }
 
+.underline {
+	text-decoration: underline !important;
+}
+
 #content {
 	margin-bottom: 10vh;
 }

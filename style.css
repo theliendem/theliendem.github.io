@@ -235,8 +235,11 @@ nav a.active {
 
 .project-box a {
 	display: inline-block;
-	margin-top: 10px;
 	text-decoration: none;
+}
+
+i.fa-github {
+	margin-top: 10px;
 }
 
 .project-box a:hover {

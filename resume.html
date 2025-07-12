@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Resume Download | Neil Dembla</title>
+	<meta http-equiv="refresh" content="0;url=/assets/Resume.pdf">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/assets/favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+
+<body>
+	<script id="replace_with_navbar" src="/js/add_nav.js"></script>
+
+	<div id="hidden-content">
+		<h1>📄 Resume Download</h1>
+		<p>Your resume download should start automatically...</p>
+		<p>If it doesn't, <a href="/assets/Resume.pdf" class="underline">click here</a> to download manually.</p>
+	</div>
+
+	<div id="content">
+	</div>
+
+	<script>
+		function showSidebar() {
+			const sidebar = document.querySelector(".sidebar");
+			sidebar.style.display = "flex";
+		}
+
+		function hideSidebar() {
+			const sidebar = document.querySelector(".sidebar");
+			sidebar.style.display = "none";
+		}
+	</script>
+
+	<script id="replace_with_footer" src="/js/add_footer.js"></script>
+</body>
+
+</html>

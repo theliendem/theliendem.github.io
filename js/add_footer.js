@@ -5,4 +5,5 @@ fetch("/assets/footer.html")
 		let newElem = document.createElement("footer");
 		newElem.innerHTML = text;
 		oldElem.parentNode.replaceChild(newElem, oldElem);
+		document.getElementById("footer-year").textContent = new Date().getFullYear();
 	});

@@ -33,6 +33,58 @@
 	<meta name="twitter:image" content="https://neildembla.com/assets/og-image.jpg">
 	<meta name="twitter:image:alt" content="Neil Dembla, Computer Science @ UW-Madison">
 
+	<!-- Structured data: tells search engines who this site is about -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebSite",
+				"@id": "https://neildembla.com/#website",
+				"url": "https://neildembla.com/",
+				"name": "Neil Dembla",
+				"inLanguage": "en",
+				"publisher": { "@id": "https://neildembla.com/#person" }
+			},
+			{
+				"@type": "ProfilePage",
+				"@id": "https://neildembla.com/#profilepage",
+				"url": "https://neildembla.com/",
+				"name": "Neil Dembla | Computer Science Student at UW-Madison",
+				"isPartOf": { "@id": "https://neildembla.com/#website" },
+				"mainEntity": { "@id": "https://neildembla.com/#person" }
+			},
+			{
+				"@type": "Person",
+				"@id": "https://neildembla.com/#person",
+				"name": "Neil Dembla",
+				"givenName": "Neil",
+				"familyName": "Dembla",
+				"url": "https://neildembla.com/",
+				"image": "https://neildembla.com/assets/neil-dembla.jpg",
+				"email": "mailto:neil@neildembla.com",
+				"jobTitle": "Computer Science Student",
+				"description": "Computer science student at the University of Wisconsin-Madison who builds browser extensions, web apps, and websites.",
+				"affiliation": {
+					"@type": "CollegeOrUniversity",
+					"name": "University of Wisconsin-Madison",
+					"alternateName": "UW-Madison",
+					"url": "https://www.wisc.edu/",
+					"sameAs": "https://en.wikipedia.org/wiki/University_of_Wisconsin%E2%80%93Madison"
+				},
+				"knowsAbout": ["Computer Science", "Software Development", "Web Development", "JavaScript", "Node.js", "Browser Extensions"],
+				"sameAs": [
+					"https://github.com/theliendem",
+					"https://www.linkedin.com/in/neildembla/",
+					"https://www.youtube.com/@neildembla1",
+					"https://www.instagram.com/neildembla1",
+					"https://bsky.app/profile/neildembla.com"
+				]
+			}
+		]
+	}
+	</script>
+
 	<!-- Comment out this script to remove typing animation -->
 	<script src="/script.js" defer></script>
 	<!-- Without JS, show the intro instead of leaving it invisible -->

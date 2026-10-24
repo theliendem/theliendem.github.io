@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title> 404 Not Found | Neil Dembla </title>
-	<link rel="icon" href="/assets/favicon.png" type="image/png">
-	<link rel="stylesheet" type="text/css" href="/style.css">
-
-	<!-- Metas -->
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Neil Dembla's personal portfolio.">
-	<meta name="keywords" content="Neil Dembla, Neil, Dembla, personal website, portfolio, projects">
+	<title>404 Not Found | Neil Dembla</title>
+	<meta name="robots" content="noindex">
 	<meta name="author" content="Neil Dembla">
 	<meta name="theme-color" content="#000000">
 
+	<link rel="icon" href="/assets/favicon.png" type="image/png" sizes="96x96">
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+
 	<!-- Comment out this script to remove typing animation -->
-	<script src="script.js" defer></script>
+	<script src="/script.js" defer></script>
+	<noscript><style>#hidden-content { visibility: visible; }</style></noscript>
 
 	<!-- For social icons -->
-	<script src="https://kit.fontawesome.com/1bba239c66.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://ka-f.fontawesome.com" crossorigin>
+	<script src="https://kit.fontawesome.com/1bba239c66.js" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
-	<script id="replace_with_navbar" src="/js/add_nav.js"></script>
+	<script id="replace_with_navbar" src="/js/add_nav.js" defer></script>
 
-	<div id="hidden-content">
-		<!-- Display code -->
-		<h1>&lt;/404&gt;</h1> <br><br>
-		<h3>The page you're looking for doesn't exist.</h3> <br>
-		<a href="/">Take me back</a>
-	</div>
+	<main>
+		<div class="typing">
+			<div id="hidden-content">
+				<!-- Display code -->
+				<h1>&lt;/404&gt;</h1>
+				<h2>The page you're looking for doesn't exist.</h2>
+				<a href="/">Take me back</a>
+			</div>
 
-	<div id="content">
+			<div id="content" aria-hidden="true">
 
-	</div>
+			</div>
+		</div>
+	</main>
 
 	<script>
 		function showSidebar() {
@@ -46,21 +53,23 @@
 		}
 	</script>
 	<style>
-		#content {
+		main {
 			font-style: italic;
+			padding-top: clamp(64px, 14vh, 150px);
 		}
 		h1 {
-			font-size: 7rem;
+			font-size: clamp(4rem, 14vw, 7rem);
 		}
-		h3 {
-			font-size: 2.5rem;
+		h2 {
+			margin: 24px 0 32px;
+			font-size: clamp(1.4rem, 4vw, 2.5rem);
 		}
-		a {
-			font-size: 2rem;
+		main a {
+			font-size: clamp(1.3rem, 3vw, 2rem);
 		}
 	</style>
 
-	<script id="replace_with_footer" src="/js/add_footer.js"></script>
+	<script id="replace_with_footer" src="/js/add_footer.js" defer></script>
 </body>
 
 </html>

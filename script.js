@@ -1,16 +1,18 @@
-const content = document.getElementById("hidden-content").innerHTML;
-document.getElementById("hidden-content").style.display = "none";
+// The real content stays in #hidden-content (invisible, but holding its space so nothing below jumps).
+// The typing animation plays in #content on top of it, then the finished copy takes its place.
+const hiddenContent = document.getElementById("hidden-content");
+const content = hiddenContent.innerHTML;
 
 document.addEventListener("DOMContentLoaded", function () {
 	const div = document.getElementById("content");
 
 	let i = 0;
 	let inTag = false;
-	
+
 	function typeNextCharacter() {
 		if (i < content.length) {
 			const char = content[i];
-			
+
 			let newContent = "";
 
 			if (i == content.length-1) newContent = content.substring(0, i + 1);
@@ -35,6 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
 				i++;
 				setTimeout(typeNextCharacter, 4);
 			}
+		} else {
+			// Done typing: the typed copy now matches the original, so let it take the original's place
+			hiddenContent.remove();
+			div.style.position = "static";
+			div.removeAttribute("aria-hidden");
 		}
 	}
 

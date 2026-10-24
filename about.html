@@ -1,123 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title> About | Neil Dembla </title>
-	<link rel="icon" href="/assets/favicon.png" type="image/png">
-	<link rel="stylesheet" type="text/css" href="/style.css">
-
-	<!-- Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Neil Dembla's personal portfolio.">
-	<meta name="keywords" content="Neil Dembla, Neil, Dembla, personal website, portfolio, projects">
-	<meta name="author" content="Neil Dembla">
-	<meta name="theme-color" content="#000000">
-
-	<!-- Comment out this script to remove typing animation -->
-	<script src="script.js" defer></script>
-
-	<!-- For social icons -->
-	<script src="https://kit.fontawesome.com/1bba239c66.js" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<title>About | Neil Dembla</title>
+	<!-- This page moved to a section of the homepage -->
+	<link rel="canonical" href="https://neildembla.com/">
+	<meta http-equiv="refresh" content="0;url=/#about">
+	<script>window.location.replace("/#about");</script>
 </head>
 
 <body>
-	<script id="replace_with_navbar" src="/js/add_nav.js"></script>
-
-	<div id="hidden-content">
-		<!-- Display code -->
-		<h1>About me</h1><br>
-
-		<hr><br>
-
-		<p>
-			Freshman in college by day, professional youtube binger by night.<br>
-			Should I watch another tutorial? Decisions, decisions... <br><br>
-
-			If you're a college admissions person or a job recruiter, welcome! I'm Steve Jobs' son, I've made 5 successful
-			startups all worth $100M each, and I know every coding language there is. Oh, I also know how to center a div ;D<br>
-			Just kidding lol that's impossible<br><br>
-
-		<div class="life-stats">
-			<div class="stat">
-				<span class="label">Coding</span>
-				<div class="bar">
-					<div class="fill" data-targetwidth="80" style="width: 0%;"></div>
-				</div>
-			</div>
-			<div class="stat">
-				<span class="label">Procrastination</span>
-				<div class="bar">
-					<div class="fill" data-targetwidth="55" style="width: 0%;"></div>
-				</div>
-			</div>
-			<div class="stat">
-				<span class="label">Sleep</span>
-				<div class="bar">
-					<div class="fill" data-targetwidth="40" style="width: 0%;"></div>
-				</div>
-			</div>
-			<div class="stat">
-				<span class="label">Humor</span>
-				<div class="bar">
-					<div class="fill" data-targetwidth="60" style="width: 0%;"></div>
-				</div>
-			</div>
-		</div>
-
-		<br><br><br>
-		<!-- Anchor tag with style button -->
-		<a href="/projects" class="button">View my work</a><br>
-
-		<span id="done_with_animation"></span>
-		</p>
-	</div>
-
-	<div id="content">
-
-	</div>
-
-	<script>
-		function showSidebar() {
-			const sidebar = document.querySelector(".sidebar");
-			sidebar.style.display = "flex";
-		}
-
-		function hideSidebar() {
-			const sidebar = document.querySelector(".sidebar");
-			sidebar.style.display = "none";
-		}
-
-		let barAnimationDone = false;
-		let typingDone = false;
-
-		setInterval(() => {
-			let humorBar = document.querySelector("#content .life-stats .stat:nth-child(4) .fill");
-			if (!humorBar) return; // Check if humorBar exists (this is because while the typing animation is going in, the humorBar doesn't exist)
-			else if (!typingDone) typingDone = true;
-
-			if (!barAnimationDone) {
-				const stats = document.querySelectorAll('.stat');
-
-				stats.forEach(stat => {
-					const fill = stat.querySelector('.fill');
-					const targetWidth = fill.getAttribute('data-targetwidth');
-
-					fill.style.width = targetWidth + "%";
-				});
-				barAnimationDone = true; // stop from constantly animating every bar
-			}
-
-			humorBar.style.transition = "width 2s ease-in-out;";
-
-			let newWidth = (Math.random() * 80 + 10);
-			while (Math.abs(humorBar.style.width - newWidth) < 20) {
-				newWidth = (Math.random() * 80 + 10); // make sure it's not too low
-			}
-			humorBar.style.width = Math.max(0, Math.min(100, newWidth)) + "%";
-		}, 2000);
-	</script>
-
-	<script id="replace_with_footer" src="/js/add_footer.js"></script>
+	<p>This page moved. Go to <a href="/#about">the About section of neildembla.com</a>.</p>
 </body>
 
 </html>

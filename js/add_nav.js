@@ -8,7 +8,7 @@ fetch("/assets/nav.html")
 		oldElem.parentNode.replaceChild(newElem, oldElem);
 
 		// Highlight the nav link for the section currently being read
-		const navbarItems = newElem.querySelectorAll("a");
+		const navbarItems = newElem.querySelectorAll("ul a");
 		const sections = document.querySelectorAll("main section[id]");
 		if (!sections.length) return;
 

@@ -90,6 +90,56 @@
 	<!-- Without JS, show the intro instead of leaving it invisible -->
 	<noscript><style>#hidden-content { visibility: visible; }</style></noscript>
 
+	<!-- Each section's prompt types its command when scrolled to, then the output fades in.
+	     Runs early (and is skipped by Cloudflare Rocket Loader) so content is never hidden unless this script is actually running. -->
+	<script data-cfasync="false">
+		if ("IntersectionObserver" in window) {
+			document.documentElement.classList.add("js");
+			document.addEventListener("DOMContentLoaded", () => {
+				const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+				function typeCommand(cmd, done) {
+					const text = cmd.textContent;
+					cmd.textContent = "";
+					cmd.style.visibility = "visible";
+					cmd.classList.add("typing-now");
+					let i = 0;
+					(function typeNextCharacter() {
+						if (i < text.length) {
+							cmd.textContent += text[i++];
+							setTimeout(typeNextCharacter, 12 + Math.random() * 18); // fast but uneven, like a person typing
+						} else {
+							cmd.classList.remove("typing-now");
+							done();
+						}
+					})();
+				}
+
+				function showOutput(section) {
+					section.querySelectorAll(".reveal").forEach((el, i) => {
+						el.style.setProperty("--i", i);
+						el.classList.add("is-visible");
+					});
+				}
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (!entry.isIntersecting) return;
+						observer.unobserve(entry.target);
+						const cmd = entry.target.querySelector(".cmd[data-type]");
+						if (!cmd || reduceMotion) {
+							if (cmd) cmd.style.visibility = "visible";
+							showOutput(entry.target);
+						} else {
+							typeCommand(cmd, () => setTimeout(() => showOutput(entry.target), 40));
+						}
+					});
+				}, { rootMargin: "0px 0px -10% 0px" });
+				document.querySelectorAll("main section:not(#intro)").forEach(section => observer.observe(section));
+			});
+		}
+	</script>
+
 	<!-- For social icons -->
 	<link rel="preconnect" href="https://ka-f.fontawesome.com" crossorigin>
 	<script src="https://kit.fontawesome.com/1bba239c66.js" crossorigin="anonymous" defer></script>
@@ -98,131 +148,163 @@
 	<script id="replace_with_navbar" src="/js/add_nav.js" defer></script>
 
 	<main>
-		<section id="intro" class="typing">
-			<div id="hidden-content">
-				<!-- Display code -->
-				<h1>Neil Dembla</h1><br>
+		<section id="intro">
+			<div class="typing">
+				<div id="hidden-content">
+					<!-- Display code -->
+					<p class="prompt-line" aria-hidden="true"><span class="p-user">neil@uw-madison</span>:<span class="p-path">~</span>$ whoami</p>
+					<h1>Neil Dembla</h1>
+					<p class="hero-lead"><span class="gt" aria-hidden="true">&gt;</span> I'm a freshman studying <strong>computer science</strong> at the <strong>University of Wisconsin-Madison</strong>.</p>
 
-				<p>I'm a freshman studying computer science at the University of Wisconsin-Madison.</p>
-			</div>
+					<div class="hero-actions">
+						<a href="#projects" class="button button-primary">View my work</a>
+						<a href="/assets/Resume.pdf" class="button">Download my resume</a>
+						<a href="#contact" class="button">Get in touch</a>
+					</div>
 
-			<div id="content" aria-hidden="true">
+					<ul class="hero-socials">
+						<li><a href="https://github.com/theliendem" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.linkedin.com/in/neildembla/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.youtube.com/@neildembla1" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.instagram.com/neildembla1" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href="https://bsky.app/profile/neildembla.com" aria-label="Bluesky"><i class="fa-brands fa-bluesky" aria-hidden="true"></i></a></li>
+					</ul>
 
+					<p class="prompt-line idle" aria-hidden="true"><span class="p-user">neil@uw-madison</span>:<span class="p-path">~</span>$ <span class="block-cursor"></span></p>
+				</div>
+
+				<div id="content" aria-hidden="true">
+
+				</div>
 			</div>
 		</section>
 
 		<section id="about">
-			<h2 class="section-heading">About me</h2><br>
+			<p class="prompt-line" aria-hidden="true"><span class="p-user">neil@uw-madison</span>:<span class="p-path">~</span>$ <span class="cmd" data-type>neofetch</span></p>
+			<h2 class="reveal">About me</h2>
 
-			<hr><br>
+			<div class="neofetch reveal">
+<pre class="neofetch-logo" aria-hidden="true">███╗   ██╗██████╗
+████╗  ██║██╔══██╗
+██╔██╗ ██║██║  ██║
+██║╚██╗██║██║  ██║
+██║ ╚████║██████╔╝
+╚═╝  ╚═══╝╚═════╝</pre>
+				<div class="neofetch-info">
+					<p class="nf-title"><span class="p-user">neil</span>@<span class="p-user">uw-madison</span></p>
+					<p class="nf-rule" aria-hidden="true">---------------</p>
+					<dl>
+						<div><dt>OS</dt><dd>Freshman Edition</dd></div>
+						<div><dt>Host</dt><dd>University of Wisconsin-Madison</dd></div>
+						<div><dt>Kernel</dt><dd>Computer Science</dd></div>
+						<div><dt>Uptime</dt><dd>coding by day, youtube by night</dd></div>
+						<div><dt>Packages</dt><dd>4 projects <span class="dim">(way more to come)</span></dd></div>
+						<div><dt>Shell</dt><dd>professional bug creator 🐛</dd></div>
+						<div><dt>Languages</dt><dd>every single one <span class="dim">(jk)</span></dd></div>
+						<div><dt>Display</dt><dd>div still not centered</dd></div>
+						<div class="nf-gap"><dt>CPU</dt><dd><span class="meter" data-value="80" aria-hidden="true">████████░░</span> <span class="pct">80%</span> <span class="dim">coding</span></dd></div>
+						<div><dt>Memory</dt><dd><span class="meter" data-value="55" aria-hidden="true">██████░░░░</span> <span class="pct">55%</span> <span class="dim">procrastination</span></dd></div>
+						<div><dt>Battery</dt><dd><span class="meter" data-value="40" aria-hidden="true">████░░░░░░</span> <span class="pct">40%</span> <span class="dim">sleep</span></dd></div>
+						<div><dt>Humor</dt><dd><span class="meter" data-value="60" data-wobble aria-hidden="true">██████░░░░</span> <span class="pct">60%</span> <span class="dim">unstable</span></dd></div>
+					</dl>
 
-			<p>
-				What's up? I'm Neil, professional bug creator 🐛<br>
-				I'm a freshman in college and I like to code. <br>
-				I made the website you're looking at right now (surprise!) <br><br>
-
-				Freshman in college by day, professional youtube binger by night.<br>
-				Should I watch another tutorial? Decisions, decisions... <br><br>
-
-				If you're a college admissions person or a job recruiter, welcome! I'm Steve Jobs' son, I've made 5 successful
-				startups all worth $100M each, and I know every coding language there is. Oh, I also know how to center a div ;D<br>
-				Just kidding lol that's impossible<br><br>
-			</p>
-
-			<div class="life-stats">
-				<div class="stat">
-					<span class="label">Coding</span>
-					<div class="bar">
-						<div class="fill" data-targetwidth="80" style="width: 0%;"></div>
-					</div>
-				</div>
-				<div class="stat">
-					<span class="label">Procrastination</span>
-					<div class="bar">
-						<div class="fill" data-targetwidth="55" style="width: 0%;"></div>
-					</div>
-				</div>
-				<div class="stat">
-					<span class="label">Sleep</span>
-					<div class="bar">
-						<div class="fill" data-targetwidth="40" style="width: 0%;"></div>
-					</div>
-				</div>
-				<div class="stat">
-					<span class="label">Humor</span>
-					<div class="bar">
-						<div class="fill" data-targetwidth="60" style="width: 0%;"></div>
-					</div>
+					<div class="color-blocks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 				</div>
 			</div>
-
-			<br><br><br>
-			<!-- Anchor tag with style button -->
-			<a href="#projects" class="button">View my work</a><br>
 		</section>
 
 		<section id="projects">
-			<h2 class="section-heading">✨ Things I've made ✨</h2><br>
-
-			<hr><br>
-
-			<p>
-				Ooh look it's the actual projects I've made!<br>
-				Don't worry, there's way more to come. <br><br>
-				Until then, enjoy my countless (four) projects! :D <br><br>
+			<p class="prompt-line" aria-hidden="true"><span class="p-user">neil@uw-madison</span>:<span class="p-path">~</span>$ <span class="cmd" data-type>ls ~/projects</span></p>
+			<h2 class="reveal">My work</h2>
+			<p class="section-lead reveal">
+				Ooh look it's the actual projects I've made! Don't worry, there's way more to come.
 			</p>
 
-			<hr><br><br>
+			<div class="projects-grid">
+				<article class="pane reveal">
+					<h3 class="pane-title"><span class="pane-num">01</span>Rimshot</h3>
+					<p>The only metronome you'll ever need. Create custom click tracks to practice your show, while Rimshot automatically adjusts tempo and time signature. Free forever for iOS and Android (beta).</p>
+					<ul class="tags">
+						<li>mobile-app</li>
+						<li>customizable-click-tracks</li>
+						<li>metronome</li>
+					</ul>
+					<div class="project-links">
+						<a href="https://getrimshot.com/" target="_blank">Get it here</a>
+						<a href="https://getrimshot.com/android" target="_blank">Join the android beta</a>
+					</div>
+				</article>
 
-			<div class="projects-flex">
-				<div class="project-box">
-					<h3>Tabloid</h3>
-					<p>A browser extension that roasts you based on your tab usage. Also doubles as a tab manager. Available on both <a href="https://chromewebstore.google.com/detail/tabloid/cjhbmplbncokngbdkcaacjimeojbpgbp" class="underline">Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/tabloid/" class="underline">Firefox</a></p>
-					<a href="https://github.com/theliendem/Tabloid---Chrome" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a>
-				</div>
-				<div class="project-box">
-					<h3>Personal website</h3>
-					<p>Yes, this website. I'm including it because I spent wayyy too much time and sleepless hours on it. You're looking at it right now. Meta, isn't it? </p>
-					<a href="https://github.com/theliendem/theliendem.github.io/" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a>
-				</div>
-				<div class="project-box">
-					<h3>SCIAPA.org website</h3>
-					<p>I was hired to make and maintain SCIAPA (South Carolina Indian-American Psychiatric Association)'s website. This was one of my first real web dev projects, and I'm so glad I got the opportunity to create it! Visit <a href="https://sciapa.org/" class="underline">sciapa.org</a>.</p>
-					<a href="https://github.com/neildembla1/neildembla1.github.io/" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a>
-				</div>
-				<div class="project-box">
-					<h3>Dembla.link</h3>
-					<p>Yet another web dev project. This is one I spun up in a few days, but I'm quite proud of it. It's basically a URL shortener that anyone can use. This made me relearn NodeJS and how to link a backend Redis API via Upstash. Try it at <a href="https://dembla.link/" class="underline">dembla.link</a>.</p>
-					<a href="https://github.com/theliendem/Dembla.com" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a>
-				</div>
+				<article class="pane reveal">
+					<h3 class="pane-title"><span class="pane-num">02</span>SCIAPA.org website</h3>
+					<p>I was hired to make and maintain SCIAPA (South Carolina Indian-American Psychiatric Association)'s website. This was one of my first real web dev projects, and I'm so glad I got the opportunity to create it!</p>
+					<ul class="tags">
+						<li>client-work</li>
+						<li>web-dev</li>
+					</ul>
+					<div class="project-links">
+						<a href="https://sciapa.org/" target="_blank">sciapa.org</a>
+						<a href="https://github.com/neildembla1/neildembla1.github.io/" target="_blank">GitHub</a>
+					</div>
+				</article>
+
+				<article class="pane reveal">
+					<h3 class="pane-title"><span class="pane-num">03</span>Tabloid</h3>
+					<p>A browser extension that roasts you based on your tab usage. Also doubles as a tab manager. Available on both Chrome and Firefox.</p>
+					<ul class="tags">
+						<li>browser-extension</li>
+						<li>chrome</li>
+						<li>firefox</li>
+					</ul>
+					<div class="project-links">
+						<a href="https://chromewebstore.google.com/detail/tabloid/cjhbmplbncokngbdkcaacjimeojbpgbp" target="_blank">Chrome Web Store</a>
+						<a href="https://addons.mozilla.org/en-US/firefox/addon/tabloid/" target="_blank">Firefox Add-ons</a>
+						<a href="https://github.com/theliendem/Tabloid---Chrome" target="_blank">GitHub</a>
+					</div>
+				</article>
+
+				<article class="pane reveal">
+					<h3 class="pane-title"><span class="pane-num">04</span>neildembla.com</h3>
+					<p>Yes, this website. I'm including it because I spent wayyy too much time and sleepless hours on it. You're looking at it right now. Meta, isn't it?</p>
+					<ul class="tags">
+						<li>html</li>
+						<li>css</li>
+						<li>javascript</li>
+					</ul>
+					<div class="project-links">
+						<a href="https://github.com/theliendem/theliendem.github.io/" target="_blank">GitHub</a>
+					</div>
+				</article>
 			</div>
 		</section>
 
 		<section id="contact">
-			<h2 class="section-heading">Let's Get in Touch</h2><br>
+			<p class="prompt-line" aria-hidden="true"><span class="p-user">neil@uw-madison</span>:<span class="p-path">~</span>$ <span class="cmd" data-type>./contact.sh</span></p>
+			<h2 class="reveal">Get in Touch</h2>
 
-			<hr><br>
+			<div class="contact-grid">
+				<div class="contact-block reveal">
+					<h3>email me directly</h3>
+					<a class="email-big" href="mailto:neil@neildembla.com">neil@neildembla.com</a>
+					<p class="email-alt">or <a href="mailto:ndembla@wisc.edu">ndembla@wisc.edu</a></p>
+					<p class="note"><i>Don't be shy — I promise I only bite bugs 🐞</i></p>
+				</div>
 
-			<p>
-				Want to say hi, roast my code, or offer me a million-dollar startup idea? <br>
-				Check me out: <br><br>
+				<div class="contact-block reveal">
+					<h3>check me out</h3>
+					<ul class="social-list">
+						<li><a href="https://github.com/theliendem"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub <span class="handle">theliendem</span></a></li>
+						<li><a href="https://www.linkedin.com/in/neildembla/"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn <span class="handle">neildembla</span></a></li>
+						<li><a href="https://www.youtube.com/@neildembla1"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube <span class="handle">@neildembla1</span></a></li>
+						<li><a href="https://www.instagram.com/neildembla1"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram <span class="handle">neildembla1</span></a></li>
+						<li><a href="https://bsky.app/profile/neildembla.com"><i class="fa-brands fa-bluesky" aria-hidden="true"></i> Bluesky <span class="handle">@neildembla.com</span></a></li>
+					</ul>
+				</div>
+			</div>
 
-				FYI, my reponse time is directly correlated to how interesting your message is. <br><br>
-
-				<a href="https://www.youtube.com/@neildembla1"><i class="fa-brands fa-youtube"></i> @neildembla1</a><br>
-				<a href="https://www.instagram.com/neildembla1"><i class="fa-brands fa-instagram"></i> neildembla1</a><br>
-				<a href="https://www.linkedin.com/in/neildembla/"><i class="fa-brands fa-linkedin"></i> neildembla</a><br>
-				<a href="https://bsky.app/profile/neildembla.com"><i class="fa-brands fa-bluesky"></i> @neildembla.com</a><br>
-				<a href="https://github.com/theliendem"><i class="fa-brands fa-github"></i> theliendem</a><br><br>
-
-				Or email me directly: <br> <a href="mailto:neil@neildembla.com">neil@neildembla.com</a> <br> <a href="mailto:ndembla@wisc.edu">ndembla@wisc.edu</a> <br><br>
-
-				<i>Don't be shy — I promise I only bite bugs 🐞</i>
-
-				<br>
-				<br>
-				psst, this website is <a href="https://github.com/theliendem/theliendem.github.io/" style="text-decoration: underline;">open source</a>
-			</p>
+			<div class="signoff reveal">
+				<p>psst, this website is <a href="https://github.com/theliendem/theliendem.github.io/">open source</a></p>
+			</div>
 		</section>
 	</main>
 
@@ -237,37 +319,42 @@
 			sidebar.style.display = "none";
 		}
 
-		// Fill the life stat bars once they scroll into view, then keep the humor bar wobbling
-		const lifeStats = document.querySelector(".life-stats");
+		// Stat meters are text, like ████████░░. Empty them now, fill them when neofetch scrolls into view,
+		// then keep the humor meter wobbling.
+		function drawMeter(meter, value) {
+			const filled = Math.round(value / 10);
+			meter.textContent = "█".repeat(filled) + "░".repeat(10 - filled);
+			meter.parentElement.querySelector(".pct").textContent = Math.round(value) + "%";
+		}
+
+		const meters = document.querySelectorAll(".meter");
+		meters.forEach(meter => drawMeter(meter, 0));
+
 		new IntersectionObserver((entries, observer) => {
 			if (!entries[0].isIntersecting) return;
 			observer.disconnect();
 
-			document.querySelectorAll('.stat').forEach(stat => {
-				const fill = stat.querySelector('.fill');
-				const targetWidth = fill.getAttribute('data-targetwidth');
-
-				fill.style.width = targetWidth + "%";
+			meters.forEach(meter => {
+				const target = Number(meter.dataset.value);
+				let value = 0;
+				const fillUp = setInterval(() => {
+					value = Math.min(target, value + 5);
+					drawMeter(meter, value);
+					if (value === target) clearInterval(fillUp);
+				}, 45);
 			});
 
-			const humorBar = lifeStats.querySelector(".stat:nth-child(4) .fill");
+			const humorMeter = document.querySelector(".meter[data-wobble]");
 			setInterval(() => {
-				let newWidth = (Math.random() * 80 + 10);
-				while (Math.abs(parseFloat(humorBar.style.width) - newWidth) < 20) {
-					newWidth = (Math.random() * 80 + 10); // make sure it actually moves
+				let newValue = (Math.random() * 80 + 10);
+				while (Math.abs(Number(humorMeter.dataset.value) - newValue) < 20) {
+					newValue = (Math.random() * 80 + 10); // make sure it actually moves
 				}
-				humorBar.style.width = newWidth + "%";
+				humorMeter.dataset.value = newValue;
+				drawMeter(humorMeter, newValue);
 			}, 2000);
-		}).observe(lifeStats);
+		}, { threshold: 0.5 }).observe(document.querySelector(".neofetch"));
 	</script>
-	<style>
-		#projects h3 {
-			font-size: 1.8rem;
-		}
-		#projects p, #projects a {
-			font-size: 1.5rem;
-		}
-	</style>
 
 	<script id="replace_with_footer" src="/js/add_footer.js" defer></script>
 </body>
